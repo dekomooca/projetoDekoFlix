@@ -22,11 +22,11 @@ Este projeto é uma aplicação web que simula as principais funcionalidades do 
 
 
 ### 🤖 Tecnologias
-| S/N | Linguagem                                                       | Versão | Descrição                           |
-|:---:|:----------------------------------------------------------------|:-------|-------------------------------------|
-|  1  | ![For-the-badge](https://img.shields.io/badge/python-blue)      | 3.12.3 | Para a lógica do backend            |
-|  2  | ![For-the-badge](https://img.shields.io/badge/django-yellow)    | 5.0.6  | Para o frontend/Desenvolvimento Web |
-|  3  | ![For-the-badge](https://img.shields.io/badge/postgreSQL-green) | 15.7   | Para armazenamento de dados |
+| S/N | Linguagem                                                       | Versão  | Descrição                           |
+|:---:|:----------------------------------------------------------------|:--------|-------------------------------------|
+|  1  | ![For-the-badge](https://img.shields.io/badge/python-blue)      | 3.10.11 | Para a lógica do backend            |
+|  2  | ![For-the-badge](https://img.shields.io/badge/django-yellow)    | 5.0.6   | Para o frontend/Desenvolvimento Web |
+|  3  | ![For-the-badge](https://img.shields.io/badge/postgreSQL-green) | 15.7    | Para armazenamento de dados |
 
 **Instalação:**
 
