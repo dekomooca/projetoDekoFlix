@@ -89,7 +89,7 @@ DATABASES = {
 
 import dj_database_url
 import os
-DATABASES_URL = os.getenv("DATABASE_URL")
+DATABASES_URL = 'postgresql://postgres:suztRbQQpdhJFuBKxVcOUyXoAmhQfHIK@roundhouse.proxy.rlwy.net:29035/railway'
 if DATABASES_URL:
     DATABASES = {
         'default': dj_database_url.config(default=DATABASES_URL, conn_max_age=1800)
