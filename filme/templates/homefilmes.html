@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+Home dos filmes - DekoFlix
+{% endblock %}
+
+{% block head %}
+<style>
+	$itemGrow: 1.2;
+$duration: 250ms;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #000;
+}
+
+h1 {
+  font-family: Arial;
+  color: red;
+  text-align: center;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3,100%);
+  overflow:hidden;
+  scroll-behavior: smooth;
+
+  section {
+    width: 100%;
+    position: relative;
+    grid-template-columns: repeat(5, auto);
+    margin: 20px 0;
+
+    .item {
+      padding: 0 2px;
+      transition: $duration all;
+
+      &:hover {
+        margin: 0 40px;
+        transform: scale(1.2);
+      }
+
+    }
+  }
+}
+
+// Remove the arrow for Mobile
+@media only screen and (max-width: 600px) {
+  a.arrow__btn {
+    display:none;
+  }
+}
+</style>
+{% endblock %}
+
+{% block content%}
+<main class="bg-primary-black min-h-screen w-full">
+	<section class="h-screen relative bg-no-repeat pb-8 pl-6 flex items-end bg-cover" style="background-image: url('{{ filme_destaque.thumb.url }}');">
+	   <div>
+		  <h2 class="text-6xl font-semibold text-red-600 my-4 my-4">
+			 {{ filme_destaque.titulo }}
+		  </h2>
+		  <p class="w-11/12 md:w-5/12 font-medium text-white my-4">
+			 {{ filme_destaque.descricao }}
+		  </p>
+		  <div class="flex my-4">
+			 <a href="{% url 'filme:detalhesfilme' filme_destaque.pk %}">
+				<button class="bg-red-600 flex items-center border border-black border-1 py-2 px-5 rounded-md" style="...">
+				   <ion-icon name="play" class="text-2xl"></ion-icon>
+				   <span class="ml-3 font-medium">
+				   Play
+				   </span>
+				</button>
+			 </a>
+		  </div>
+	   </div>
+	</section>
+	<section class="bg-primary-black flex justify-center py-10">
+		<div class="p-8 w-10/12 relative">
+			<h2 class="text-gray-200 text-2xl font-medium">
+			   Novo
+			</h2>
+			<div class="wrapper">
+			   <section id="section1" class="flex flex-nowrap items-center justify-center space-x-3">
+				  <a href="#section2" class="arrow___btn text-6xl text-white page">
+					  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+				  </a>
+				   {% for filme in lista_filmes_recentes %}
+				   		{% if forloop.counter < 4 %}
+						  <div class="item h-64 w-1/4 m-4">
+							 <a href="{% url 'filme:detalhesfilme' filme.pk %}">
+							 <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-cover">
+							 </a>
+						  </div>
+				   		{% endif %}
+				   {% endfor %}
+				  <a href="#section2" class="arrow___btn text-6xl">
+					  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19l7-7-7-7"></path></svg>
+				  </a>
+			   </section>
+				{% if lista_filmes_recentes|length > 3 %}
+				   <section id="section2" class="flex flex-nowrap items-center justify-center">
+					  <a href="#section1" class="arrow___btn text-6xl">
+						  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+					  </a>
+					   {% for filme in lista_filmes_recentes %}
+						   {% if forloop.counter > 3 %}
+							  <div class="item h-64 w-1/4 m-4">
+								 <a href="{% url 'filme:detalhesfilme' filme.pk %}">
+								 <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-cover">
+								 </a>
+							  </div>
+						   {% endif %}
+					   {% endfor %}
+					  <a href="#section1" class="arrow___btn text-6xl">
+						  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19l7-7-7-7"></path></svg>
+					  </a>
+				   </section>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+
+
+	<section class="bg-primary-black flex justify-center">
+		<div class="p-8 w-10/12 relative">
+			<h2 class="text-gray-200 text-2xl font-medium">
+			   Em Alta
+			</h2>
+			<div class="wrapper">
+			   <section id="section1EmAlta" class="flex flex-nowrap items-center justify-center space-x-3">
+				  <a href="#section2EmAlta" class="arrow___btn text-6xl text-white page">
+					  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+				  </a>
+				   {% for filme in lista_filmes_emalta %}
+				   		{% if forloop.counter < 4 %}
+						  <div class="item h-64 w-1/4 m-4">
+							 <a href="{% url 'filme:detalhesfilme' filme.pk %}">
+							 <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-cover">
+							 </a>
+						  </div>
+				   		{% endif %}
+				   {% endfor %}
+				  <a href="#section2EmAlta" class="arrow___btn text-6xl">
+					  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19l7-7-7-7"></path></svg>
+				  </a>
+			   </section>
+				{% if lista_filmes_emalta|length > 3 %}
+				   <section id="section2EmAlta" class="flex flex-nowrap items-center justify-center">
+					  <a href="#section1EmAlta" class="arrow___btn text-6xl">
+						  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+					  </a>
+					   {% for filme in lista_filmes_emalta %}
+						   {% if forloop.counter > 3 %}
+							  <div class="item h-64 w-1/4 m-4">
+								 <a href="{% url 'filme:detalhesfilme' filme.pk %}">
+								 <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-cover">
+								 </a>
+							  </div>
+						   {% endif %}
+					   {% endfor %}
+					  <a href="#section1EmAlta" class="arrow___btn text-6xl">
+						  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19l7-7-7-7"></path></svg>
+					  </a>
+				   </section>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+
+<!--	<section>-->
+<!--		{{ request.user.filmes_vistos.all }}-->
+<!--	</section>-->
+
+	<section class="bg-primary-black flex justify-center">
+		<div class="p-8 w-10/12 relative">
+			<h2 class="text-gray-200 text-2xl font-medium">
+			   Continuar assistindo
+			</h2>
+			<div class="wrapper">
+			   <section id="section1Vistos" class="flex flex-nowrap items-center justify-center space-x-3">
+				  <a href="#section2Vistos" class="arrow___btn text-6xl text-white page">
+					  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+				  </a>
+				   {% for filme in request.user.filmes_vistos.all %}
+				   		{% if forloop.counter < 4 %}
+						  <div class="item h-64 w-1/4 m-4">
+							 <a href="{% url 'filme:detalhesfilme' filme.pk %}">
+							 <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-cover">
+							 </a>
+						  </div>
+				   		{% endif %}
+				   {% endfor %}
+				  <a href="#section2Vistos" class="arrow___btn text-6xl">
+					  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19l7-7-7-7"></path></svg>
+				  </a>
+			   </section>
+				{% if request.user.filmes_vistos.all|length > 3 %}
+				   <section id="section2Vistos" class="flex flex-nowrap items-center justify-center">
+					  <a href="#section1Vistos" class="arrow___btn text-6xl">
+						  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+					  </a>
+					   {% for filme in request.user.filmes_vistos.all %}
+						   {% if forloop.counter > 3 %}
+							  <div class="item h-64 w-1/4 m-4">
+								 <a href="{% url 'filme:detalhesfilme' filme.pk %}">
+								 <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-cover">
+								 </a>
+							  </div>
+						   {% endif %}
+					   {% endfor %}
+					  <a href="#section1Vistos" class="arrow___btn text-6xl">
+						  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19l7-7-7-7"></path></svg>
+					  </a>
+				   </section>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+
+</main>
+
+<!--    <div class="py-20">-->
+<!--        <h1>Lista de filmes</h1>-->
+<!--    &lt;!&ndash; #FBV   { for filme in lista_filmes } &ndash;&gt;-->
+<!--        {% for filme in object_list %}-->
+<!--        <a href="{% url 'filme:detalhesfilme' filme.pk %}"><p>{{ filme.titulo }}</p></a>-->
+<!--            <p>{{ filme.descricao }}</p>-->
+<!--            <img src="{{ filme.thumb.url }}">-->
+<!--        {% endfor %}-->
+<!--    </div>-->
+
+<!--<div class="py-20">-->
+<!--    <h2>Novo</h2>-->
+<!--    {{ lista_filmes_recentes }}-->
+<!--</div>-->
+
+<!--<div class="py-10">-->
+<!--    <h2>Em alta</h2>-->
+<!--    {{ lista_filmes_emalta }}-->
+<!--</div>-->
+{% endblock%}
