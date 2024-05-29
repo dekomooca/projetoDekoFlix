@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,12 +20,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-c%xe9%7h2#7+j+v$*xhprir_b18nyu7_2v1*t9m!m*$h*#34#b'
+TOKEN_CSRF = os.getenv('TOKEN_CSRF')
+if TOKEN_CSRF:
+    SECRET_KEY = TOKEN_CSRF
+    CSRF_TRUSTED_ORIGINS = 'https://projetodekoflix-production.up.railway.app'
+else:
+    SECRET_KEY = 'django-insecure-c%xe9%7h2#7+j+v$*xhprir_b18nyu7_2v1*t9m!m*$h*#34#b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["projetodekoflix-production.up.railway.app", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -88,12 +93,13 @@ DATABASES = {
 }
 
 import dj_database_url
-import os
-DATABASES_URL = 'postgresql://postgres:suztRbQQpdhJFuBKxVcOUyXoAmhQfHIK@roundhouse.proxy.rlwy.net:29035/railway'
+DATABASES_URL = os.getenv("DATABASE_URL")
+#'postgresql://postgres:suztRbQQpdhJFuBKxVcOUyXoAmhQfHIK@roundhouse.proxy.rlwy.net:29035/railway'
 if DATABASES_URL:
     DATABASES = {
         'default': dj_database_url.config(default=DATABASES_URL, conn_max_age=1800)
     }
+
 
 
 

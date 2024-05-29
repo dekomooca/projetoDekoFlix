@@ -4,6 +4,11 @@
 
 **Bem-vindo ao repositório do DekoFlix!** 
 
+Para acessar o projeto online entre : 
+```bash
+# https://projetodekoflix-production.up.railway.app/
+```
+
 Este projeto é uma aplicação web que simula as principais funcionalidades do Netflix, incluindo:
 
 **Funcionalidades:**
@@ -26,7 +31,8 @@ Este projeto é uma aplicação web que simula as principais funcionalidades do 
 |:---:|:----------------------------------------------------------------|:--------|-------------------------------------|
 |  1  | ![For-the-badge](https://img.shields.io/badge/python-blue)      | 3.10.11 | Para a lógica do backend            |
 |  2  | ![For-the-badge](https://img.shields.io/badge/django-yellow)    | 5.0.6   | Para o frontend/Desenvolvimento Web |
-|  3  | ![For-the-badge](https://img.shields.io/badge/postgreSQL-green) | 15.7    | Para armazenamento de dados |
+|  3  | ![For-the-badge](https://img.shields.io/badge/postgreSQL-green) | 15.7    | Para armazenamento de dados         |
+|  4  | ![For-the-badge](https://img.shields.io/badge/railway-black)    | X       | Para hospedagem e deploy            |
 
 **Instalação:**
 
