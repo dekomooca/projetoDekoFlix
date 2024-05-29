@@ -74,7 +74,7 @@ h1 {
 				<button class="bg-red-600 flex items-center border border-black border-1 py-2 px-5 rounded-md" style="...">
 				   <ion-icon name="play" class="text-2xl"></ion-icon>
 				   <span class="ml-3 font-medium">
-				   Play
+				   Saiba mais
 				   </span>
 				</button>
 			 </a>
@@ -92,13 +92,13 @@ h1 {
 					  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
 				  </a>
 				   {% for filme in lista_filmes_recentes %}
-<!--				   		{% if forloop.counter < 4 %}-->
+				   		{% if forloop.counter < 4 %}
 						  <div class="item h-64 w-1/4 m-4">
 							 <a href="{% url 'filme:detalhesfilme' filme.id %}">
 							 <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-cover">
 							 </a>
 						  </div>
-<!--				   		{% endif %}-->
+				   		{% endif %}
 				   {% endfor %}
 				  <a href="#section2" class="arrow___btn text-6xl">
 					  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19l7-7-7-7"></path></svg>
