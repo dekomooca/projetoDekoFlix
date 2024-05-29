@@ -16,12 +16,12 @@ def lista_filmes_emalta(request):
 
 def filme_destaque(request):
     # filme = Filme.objects.order_by('visualizacao')[0]
-    # filme = random.choice(Filme.objects.all())
-    # return {"filme_destaque": filme}
-    filme = Filme.objects.all().order_by('-data_criacao')[0:8]
-    if filme:
-        filme_destaque = filme
-    else:
-        filme_destaque = None
-    #filme = random.choice(Filme.objects.all())
+    filme = random.choice(Filme.objects.all())
     return {"filme_destaque": filme}
+    # filme = Filme.objects.all().order_by('-data_criacao')[0:8]
+    # if filme:
+    #     filme_destaque = filme
+    # else:
+    #     filme_destaque = None
+    # #filme = random.choice(Filme.objects.all())
+    # return {"filme_destaque": filme}
