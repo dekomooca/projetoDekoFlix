@@ -21,7 +21,7 @@ urlpatterns = [
     #path('filmes/', homefilmes), #FBV
     path('', Homepage.as_view(), name='homepage'), #CBV
     path('filmes/', Homefilmes.as_view(), name='homefilmes'), #CBV
-    path('filmes/detalhesfilme/<int:pk>', Detalhesfilme.as_view(), name='detalhesfilme'),
+    path('filmes/detalhesfilme/<int:id>', Detalhesfilme.as_view(), name='detalhesfilme'),
     path('pesquisa/', PesquisaFilmes.as_view(), name='pesquisafilmes'),
     path('login/', auth_view.LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', views.logout_view, name='logout'),
