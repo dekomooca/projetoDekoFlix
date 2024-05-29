@@ -4,7 +4,7 @@
 
 **Bem-vindo ao repositório do DekoFlix!** 
 
-Para acessar o projeto online entre: 
+Para acessar o projeto online entre : 
 ```bash
 # https://projetodekoflix-production.up.railway.app/
 ```
