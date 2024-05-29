@@ -16,9 +16,5 @@ def lista_filmes_emalta(request):
 
 def filme_destaque(request):
     # filme = Filme.objects.order_by('visualizacao')[0]
-    filme = None
-    if filme:
-        filme = random.choice(Filme.objects.all())
-        return {"filme_destaque": filme}
-    else:
-        return None
+    filme = random.choice(Filme.objects.all())
+    return {"filme_destaque": filme}
