@@ -73,7 +73,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'filme.novos_context.lista_filmes_recentes',
                 'filme.novos_context.lista_filmes_emalta',
-                'filme.novos_context.filme_destaque',
+                # 'filme.novos_context.filme_destaque',
             ],
         },
     },
