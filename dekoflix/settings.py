@@ -20,17 +20,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-TOKEN_CSRF = '859fc242ef3d97bd5307fbd0466d351ff759ea81250f0738'
-if TOKEN_CSRF:
-    SECRET_KEY = TOKEN_CSRF
-    CSRF_TRUSTED_ORIGINS = ['https://projetodekoflix-production.up.railway.app']
-else:
-    SECRET_KEY = 'django-insecure-c%xe9%7h2#7+j+v$*xhprir_b18nyu7_2v1*t9m!m*$h*#34#b'
+# TOKEN_CSRF = '859fc242ef3d97bd5307fbd0466d351ff759ea81250f0738'
+# if TOKEN_CSRF:
+#     SECRET_KEY = TOKEN_CSRF
+#     CSRF_TRUSTED_ORIGINS = ['https://projetodekoflix-production.up.railway.app']
+# else:
+SECRET_KEY = 'django-insecure-c%xe9%7h2#7+j+v$*xhprir_b18nyu7_2v1*t9m!m*$h*#34#b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["projetodekoflix-production.up.railway.app", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["*"]
+    #["projetodekoflix-production.up.railway.app", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -93,7 +94,7 @@ DATABASES = {
 }
 
 import dj_database_url
-DATABASES_URL = 'postgresql://postgres:KFrHQAXitpFEcZpsvnhnwcDXeInJohhZ@roundhouse.proxy.rlwy.net:19466/railway'
+DATABASES_URL = 'postgresql://postgres:xvtHJfrcLPSBkgeqvvBZheaJMBhEhUyX@monorail.proxy.rlwy.net:27558/railway'
 #os.getenv("DATABASE_URL")
 #'postgresql://postgres:suztRbQQpdhJFuBKxVcOUyXoAmhQfHIK@roundhouse.proxy.rlwy.net:29035/railway'
 
