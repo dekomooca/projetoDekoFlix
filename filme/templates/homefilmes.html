@@ -64,7 +64,7 @@ h1 {
 	<section class="h-screen relative bg-no-repeat pb-8 pl-6 flex items-end bg-cover" style="background-image: url('{{ filme_destaque.thumb.url }}');">
 	   <div>
 		  <h2 class="text-6xl font-semibold text-red-600 my-4 my-4">
-			 Destaque: {{ filme_destaque.titulo }}
+			 {{ Destaque: filme_destaque.titulo }}
 		  </h2>
 		  <p class="w-11/12 md:w-5/12 font-medium text-white my-4">
 			 {{ filme_destaque.descricao }}
@@ -92,13 +92,13 @@ h1 {
 					  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
 				  </a>
 				   {% for filme in lista_filmes_recentes %}
-				   		{% if forloop.counter < 4 %}
+<!--				   		{% if forloop.counter < 4 %}-->
 						  <div class="item h-64 w-1/4 m-4">
 							 <a href="{% url 'filme:detalhesfilme' filme.id %}">
 							 <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-cover">
 							 </a>
 						  </div>
-				   		{% endif %}
+<!--				   		{% endif %}-->
 				   {% endfor %}
 				  <a href="#section2" class="arrow___btn text-6xl">
 					  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19l7-7-7-7"></path></svg>
